@@ -1,0 +1,35 @@
+syntax = "proto3";
+package users;
+
+// The User service definition.
+service Users {
+  // Get all Users with filter - and subsequently keep sending change notification.
+  rpc GetUsers(UserSub) returns (stream UserNotification) {}
+  // Create a new User - A simple RPC
+  rpc CreateUser (UserObject) returns (CommonResponse) {}
+  rpc DeleteUser (UserObject) returns (CommonResponse) {}
+}
+
+// Request message for creating a new customer
+message UserNotification {
+  UserObject user = 1;
+  enum EventType {
+    ADDED = 0;
+    REMOVED = 1;
+  }
+  EventType event_type = 2;
+}
+// Request message for creating a new customer
+message UserObject {
+  int32 id = 1;  // Unique ID number for a Customer.
+  string name = 2;
+}
+
+message CommonResponse {
+  int32 code = 1;
+  string message = 2;
+}
+message UserSub {
+  string subscriptionID = 1;
+}
+

@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "target": "es2018",
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "declaration": true,
+        "strictPropertyInitialization": false,
+        "outDir": "build",
+        "lib": [
+            "es2018",
+            "esnext.asynciterable",
+            "dom"
+        ],
+        "strict": true,
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "src/*",
+                "src/generated/*",
+                "node_modules/*",
+            ]
+        }
+    },
+    "include": [
+        "src/**/*",
+    ]
+}
